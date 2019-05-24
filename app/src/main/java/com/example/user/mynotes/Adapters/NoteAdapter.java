@@ -36,6 +36,12 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
         noteViewHolder.onBind(note);
     }
 
+    public void addItem(int position, Note note){
+        this.notes.add(position, note);
+        //Мы можем вызвать
+        //super.notifyItemInserted(position);
+    }
+
     // total number of rows
     @Override
     public int getItemCount() {

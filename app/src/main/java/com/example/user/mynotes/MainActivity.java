@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        notes.add(createNote("Fuck", "This shit"));
         RecyclerView recyclerView = findViewById(R.id.main_recycler);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
@@ -66,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         String title = data.getStringExtra("title");
         String text = data.getStringExtra("body");
         notes.add(createNote(title, text));
+        adapter.notifyItemChanged(notes.size());
         Toast toast = Toast.makeText(getApplicationContext(),
                 "Note was successfully added!", Toast.LENGTH_SHORT);
         toast.show();
