@@ -1,10 +1,12 @@
 package com.example.user.mynotes;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -32,12 +34,6 @@ public class NewNoteActivity extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                Intent intent = new Intent();
-                intent.putExtra("101", editTitle.getText().toString());
-                setResult(101, intent);
-                finish();*/
-
                 Intent intent = new Intent();
                 intent.putExtra("title", editTitle.getText().toString());
                 intent.putExtra("body", editBody.getText().toString());

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">One Second Notes</string>
     <string name="action_settings">Settings</string>
+    <string name="hint_1">Enter Title</string>
+    <string name="hint_2">Enter Text</string>
+    <string name="draft">TextView</string>
 </resources>
