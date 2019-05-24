@@ -88,12 +88,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (data == null) {return;}
-        String title = data.getStringExtra("title");
-        String text = data.getStringExtra("body");
-        notes.add(createNote(title, text));
-        adapter.notifyItemChanged(notes.size());
-        Toast toast = Toast.makeText(getApplicationContext(),
-                "Note was successfully added!", Toast.LENGTH_SHORT);
-        toast.show();
+        else {
+            String title = data.getStringExtra("title");
+            String text = data.getStringExtra("body");
+            notes.add(createNote(title, text));
+            adapter.notifyItemChanged(notes.size());
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Note was successfully added!", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 }
