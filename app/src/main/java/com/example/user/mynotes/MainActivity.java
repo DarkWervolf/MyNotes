@@ -27,8 +27,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -73,7 +77,11 @@ public class MainActivity extends AppCompatActivity {
     };
 
     Note createNote(String title, String text){
-        Note newNote = new Note(title, text);
+        Date currentDate = new Date();
+        DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+        String timeText = timeFormat.format(currentDate);
+
+        Note newNote = new Note(title, text, timeText);
         return newNote;
     }
 
