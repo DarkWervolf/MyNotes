@@ -32,9 +32,16 @@ public class NewNoteActivity extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Intent intent = new Intent();
                 intent.putExtra("101", editTitle.getText().toString());
                 setResult(101, intent);
+                finish();*/
+
+                Intent intent = new Intent();
+                intent.putExtra("title", editTitle.getText().toString());
+                intent.putExtra("body", editBody.getText().toString());
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });

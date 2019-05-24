@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.user.mynotes.Adapters.NoteAdapter;
 import com.example.user.mynotes.Models.Note;
@@ -30,17 +31,13 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private NoteAdapter adapter;
-
+    final ArrayList<Note> notes = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<Note> notes = new ArrayList<>();
-        Note note1 = new Note("Fuck", "this shit");
-        Note note2 = new Note("Fuck2", "this shit2");
-        Note note3 = new Note("Fuck3", "this shit3");
-        notes.add(note1);notes.add(note3);notes.add(note2);
+        notes.add(createNote("Fuck", "This shit"));
         RecyclerView recyclerView = findViewById(R.id.main_recycler);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
@@ -51,11 +48,26 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Note note;
+                Note note = null;
                 Intent intent = new Intent(MainActivity.this, NewNoteActivity.class);
-                startActivityForResult(intent, 101);
+                startActivityForResult(intent, 1);
             }
         });
     }
 
+    Note createNote(String title, String text){
+        Note newNote = new Note(title, text);
+        return newNote;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (data == null) {return;}
+        String title = data.getStringExtra("title");
+        String text = data.getStringExtra("body");
+        notes.add(createNote(title, text));
+        Toast toast = Toast.makeText(getApplicationContext(),
+                "Note was successfully added!", Toast.LENGTH_SHORT);
+        toast.show();
+    }
 }
