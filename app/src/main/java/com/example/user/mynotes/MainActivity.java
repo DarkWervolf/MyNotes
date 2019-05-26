@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         ConstraintLayout mainLayout = findViewById(R.id.main_layout);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.button_addNote);
-        fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.main_button_addNote);
+        addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, NewNoteActivity.class);
